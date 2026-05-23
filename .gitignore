@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.pyc
+data/enrich_*.log
+data/guess.log
