@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram-чаты для родителей | Москва и МО</title>
+  <meta name="description" content="Каталог родительских Telegram-чатов: Митино, Строгино, Отрада, Красногорск, Зеленоград и другие районы.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c0e;
+      --bg-card: #16161a;
+      --bg-card-hover: #1e1e24;
+      --accent: #ff2d7a;
+      --accent-glow: rgba(255, 45, 122, 0.35);
+      --accent-soft: rgba(255, 45, 122, 0.12);
+      --text: #ffffff;
+      --text-muted: #a0a0ae;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 14px;
+      --font: 'Montserrat', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      background: #000;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .top-bar span { color: var(--accent); }
+
+    header {
+      padding: 48px 20px 32px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, var(--accent-glow), transparent),
+        var(--bg);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: clamp(13px, 2.5vw, 16px);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 8px;
+    }
+
+    .locations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 16px;
+      margin-top: 24px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .locations .dot { color: var(--accent); }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .filters-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin-bottom: 32px;
+    }
+
+    .filters-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 16px 16px 16px 48px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 500;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #search::placeholder { color: #555; }
+
+    #search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .filter-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .filter-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chip:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    #count { color: var(--accent); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 45, 122, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .card-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.35;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .card-user {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .card-user code {
+      color: #7eb8ff;
+      font-family: inherit;
+      font-weight: 600;
+    }
+
+    .btn-join {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding: 12px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: filter 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-join:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-join svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty h3 {
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 80px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .loading::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin: 16px auto 0;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer {
+      background: #000;
+      border-top: 1px solid var(--border);
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      header { padding: 32px 16px 24px; }
+      main { padding: 0 16px 60px; }
+      .filters-section { padding: 20px 16px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    Москва &bull; <span>Telegram-чаты для родителей</span> &bull; Митино &bull; Строгино &bull; Отрада &bull; Красногорск &bull; Зеленоград
+  </div>
+
+  <header>
+    <p class="eyebrow">Каталог сообществ</p>
+    <h1>Telegram-чаты</h1>
+    <p class="subtitle">Для родителей, соседей и семей Москвы и области</p>
+    <div class="locations">
+      <span>Митино</span><span class="dot">&bull;</span>
+      <span>Строгино</span><span class="dot">&bull;</span>
+      <span>Отрада</span><span class="dot">&bull;</span>
+      <span>Красногорск</span><span class="dot">&bull;</span>
+      <span>Зеленоград</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters-section">
+      <p class="filters-title">Поиск и фильтры</p>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/>
+        </svg>
+        <input type="search" id="search" placeholder="Поиск по названию или @username..." autocomplete="off">
+      </div>
+      <div class="filter-groups">
+        <div class="filter-group">
+          <label>Район</label>
+          <div class="chips" id="region-filters"></div>
+        </div>
+        <div class="filter-group">
+          <label>Тема</label>
+          <div class="chips" id="topic-filters"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats">
+      <span>Найдено: <span id="count">—</span></span>
+      <span id="total"></span>
+    </div>
+
+    <div id="grid" class="grid">
+      <div class="loading">Загрузка чатов</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026, г. Москва &bull; Данные из <a href="data/telegram_chats.csv">telegram_chats.csv</a></p>
+  </footer>
+
+  <script>
+    const REGIONS = [
+      { id: 'mitino', label: 'Митино', match: /митино|murmitino|szao|сзао|тушино/i },
+      { id: 'zelenograd', label: 'Зеленоград', match: /зеленоград|zele/i },
+      { id: 'krasnogorsk', label: 'Красногорск', match: /красногорск|новая рига|рига/i },
+      { id: 'strogino', label: 'Строгино', match: /строгино/i },
+      { id: 'otrada', label: 'Отрада', match: /отрада|aristovo|аристо|пятницк|лесная/i },
+      { id: 'moscow', label: 'Москва', match: /москв|родител|свао|фили|кунцево/i },
+    ];
+
+    const TOPICS = [
+      { id: 'moms', label: 'Мамы', match: /мам|беремен|августят|мамоч/i },
+      { id: 'schools', label: 'Школы', match: /школ|образован|репетитор|учител|профимат|вышмат|тutor|tutor/i },
+      { id: 'market', label: 'Барахолка', match: /барахол|продам|отдам/i },
+      { id: 'jk', label: 'ЖК / соседи', match: /жк|сосед|муромск/i },
+      { id: 'events', label: 'События', match: /праздник|event|творческ/i },
+      { id: 'other', label: 'Другое', match: /.*/ },
+    ];
+
+    let chats = [];
+    let activeRegion = 'all';
+    let activeTopic = 'all';
+
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',');
+      return lines.slice(1).map(line => {
+        const values = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') { inQuotes = !inQuotes; continue; }
+          if (ch === ',' && !inQuotes) { values.push(current); current = ''; continue; }
+          current += ch;
+        }
+        values.push(current);
+        const row = {};
+        headers.forEach((h, i) => { row[h.trim()] = (values[i] || '').trim(); });
+        return row;
+      });
+    }
+
+    function detectTags(chat) {
+      const text = `${chat.name} ${chat.username}`;
+      const regions = REGIONS.filter(r => r.match.test(text)).map(r => r.id);
+      const topics = TOPICS.filter(t => t.id !== 'other' && t.match.test(text)).map(t => t.id);
+      if (!topics.length) topics.push('other');
+      return { regions, topics };
+    }
+
+    function enrich(chat) {
+      const tags = detectTags(chat);
+      const tme = chat.username ? `https://t.me/${chat.username}` : chat.url;
+      return { ...chat, ...tags, tme };
+    }
+
+    function renderChips(container, items, type, allLabel) {
+      const allBtn = document.createElement('button');
+      allBtn.className = 'chip active';
+      allBtn.dataset[type] = 'all';
+      allBtn.textContent = allLabel;
+      container.appendChild(allBtn);
+
+      items.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'chip';
+        btn.dataset[type] = item.id;
+        btn.textContent = item.label;
+        container.appendChild(btn);
+      });
+    }
+
+    function setActiveChip(container, type, value) {
+      container.querySelectorAll('.chip').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset[type] === value);
+      });
+    }
+
+    function filterChats() {
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      return chats.filter(chat => {
+        const hay = `${chat.name} ${chat.username}`.toLowerCase();
+        if (q && !hay.includes(q)) return false;
+        if (activeRegion !== 'all' && !chat.regions.includes(activeRegion)) return false;
+        if (activeTopic !== 'all' && !chat.topics.includes(activeTopic)) return false;
+        return true;
+      });
+    }
+
+    function regionLabel(id) {
+      return REGIONS.find(r => r.id === id)?.label || id;
+    }
+
+    function topicLabel(id) {
+      return TOPICS.find(t => t.id === id)?.label || id;
+    }
+
+    function renderGrid(list) {
+      const grid = document.getElementById('grid');
+      document.getElementById('count').textContent = list.length;
+
+      if (!list.length) {
+        grid.innerHTML = `
+          <div class="empty">
+            <h3>Ничего не найдено</h3>
+            <p>Попробуйте изменить запрос или сбросить фильтры</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(chat => {
+        const tags = [
+          ...chat.regions.slice(0, 2).map(r => `<span class="tag">${regionLabel(r)}</span>`),
+          ...chat.topics.slice(0, 2).map(t => `<span class="tag">${topicLabel(t)}</span>`),
+        ].join('');
+
+        return `
+          <article class="card">
+            <span class="card-num">#${chat.id}</span>
+            <h2 class="card-title">${escapeHtml(chat.name)}</h2>
+            <div class="card-tags">${tags}</div>
+            <p class="card-user">@${escapeHtml(chat.username)}</p>
+            <a class="btn-join" href="${escapeHtml(chat.tme)}" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+              Перейти в чат
+            </a>
+          </article>`;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function update() {
+      renderGrid(filterChats());
+    }
+
+    async function init() {
+      renderChips(document.getElementById('region-filters'), REGIONS, 'region', 'Все районы');
+      renderChips(document.getElementById('topic-filters'), TOPICS.filter(t => t.id !== 'other'), 'topic', 'Все темы');
+
+      document.getElementById('region-filters').addEventListener('click', e => {
+        const btn = e.target.closest('.chip');
+        if (!btn) return;
+        activeRegion = btn.dataset.region;
+        setActiveChip(document.getElementById('region-filters'), 'region', activeRegion);
+        update();
+      });
+
+      document.getElementById('topic-filters').addEventListener('click', e => {
+        const btn = e.target.closest('.chip');
+        if (!btn) return;
+        activeTopic = btn.dataset.topic;
+        setActiveChip(document.getElementById('topic-filters'), 'topic', activeTopic);
+        update();
+      });
+
+      document.getElementById('search').addEventListener('input', update);
+
+      try {
+        const res = await fetch('data/telegram_chats.csv');
+        if (!res.ok) throw new Error('CSV not found');
+        chats = parseCSV(await res.text()).map(enrich);
+      } catch {
+        chats = FALLBACK.map(enrich);
+      }
+
+      document.getElementById('total').textContent = `Всего: ${chats.length}`;
+      update();
+    }
+
+    const FALLBACK = [{"id":"1","name":"Чат мамочек","username":"malisch2025","url":"https://web.telegram.org/k/#@malisch2025"},{"id":"2","name":"Мамы Зеленоград","username":"mamchatzelao","url":"https://web.telegram.org/k/#@mamchatzelao"},{"id":"3","name":"Чат беременных","username":"beremennost_pregnancy","url":"https://web.telegram.org/k/#@beremennost_pregnancy"},{"id":"4","name":"Родители Москвы и М.О. за очное образование","username":"roditelimoskvy","url":"https://web.telegram.org/k/#@roditelimoskvy"},{"id":"5","name":"МАМЫ 💙 МИТИНО • СЗАО | ЧАТ","username":"mams_mitino","url":"https://web.telegram.org/k/#@mams_mitino"},{"id":"6","name":"Дети ЖК на улице Муромская","username":"mirmitino_kids","url":"https://web.telegram.org/k/#@mirmitino_kids"},{"id":"7","name":"Продам/отдам детские вещи Красногорск","username":"ArsDeti","url":"https://web.telegram.org/k/#@ArsDeti"},{"id":"8","name":"Мамы Красногорска ЧАТ","username":"krasnogorsk_mammy_chat","url":"https://web.telegram.org/k/#@krasnogorsk_mammy_chat"},{"id":"9","name":"Мамы новая рига","username":"mami_riga","url":"https://web.telegram.org/k/#@mami_riga"},{"id":"10","name":"Женская болталка","username":"Jenskiy_Mamskiy","url":"https://web.telegram.org/k/#@Jenskiy_Mamskiy"},{"id":"11","name":"Главный чат Митино","username":"mitino360","url":"https://web.telegram.org/k/#@mitino360"},{"id":"12","name":"Чат в Митино","username":"mitino4","url":"https://web.telegram.org/k/#@mitino4"},{"id":"13","name":"МИТИНО • СЗАО | ЧАТ","username":"chat_mitino","url":"https://web.telegram.org/k/#@chat_mitino"},{"id":"14","name":"БАРАХОЛКА ДЕТИ 💙 МИТИНО • СЗАО | ЧАТ","username":"mitinodeti","url":"https://web.telegram.org/k/#@mitinodeti"},{"id":"15","name":"МИТИНО ♥️","username":"pro_mitino_tg","url":"https://web.telegram.org/k/#@pro_mitino_tg"},{"id":"16","name":"Мир Митино","username":"mirmitino_today","url":"https://web.telegram.org/k/#@mirmitino_today"},{"id":"17","name":"ЖК Митино Парк","username":"mitino_park","url":"https://web.telegram.org/k/#@mitino_park"},{"id":"18","name":"Соседи Митино","username":"sosedimitino","url":"https://web.telegram.org/k/#@sosedimitino"},{"id":"19","name":"ПРО ШКОЛЫ ЧАТ","username":"proschoolmskchat","url":"https://web.telegram.org/k/#@proschoolmskchat"},{"id":"20","name":"ЖК Аристо","username":"lo_aristovo2","url":"https://web.telegram.org/k/#@lo_aristovo2"},{"id":"21","name":"ЖК Пятницкие кварталы","username":"AktivSaburovo","url":"https://web.telegram.org/k/#@AktivSaburovo"},{"id":"22","name":"ЖК Отрада Работа","username":"rabotamockwa","url":"https://web.telegram.org/k/#@rabotamockwa"},{"id":"23","name":"ЧАТ СЗАО- ТУшино Митинл","username":"chatszao","url":"https://web.telegram.org/k/#@chatszao"},{"id":"24","name":"Зеленоград объявления","username":"zelenograd_adverts","url":"https://web.telegram.org/k/#@zelenograd_adverts"},{"id":"25","name":"Мамы Зеленограда","username":"mamaZelenograd","url":"https://web.telegram.org/k/#@mamaZelenograd"},{"id":"26","name":"Мамочки","username":"mamochkachat","url":"https://web.telegram.org/k/#@mamochkachat"},{"id":"27","name":"Августята","username":"avgustyta2026","url":"https://web.telegram.org/k/#@avgustyta2026"},{"id":"28","name":"Клуб мам Зеленоград","username":"mamaszelek","url":"https://web.telegram.org/k/#@mamaszelek"},{"id":"29","name":"Зелмамочки","username":"zelemama","url":"https://web.telegram.org/k/#@zelemama"},{"id":"30","name":"Детские центры и спорт","username":"saomoms","url":"https://web.telegram.org/k/#@saomoms"},{"id":"31","name":"СтрогиноМам и Пап","username":"stroginomamipap","url":"https://web.telegram.org/k/#@stroginomamipap"},{"id":"32","name":"СтрогиноЧат","username":"StroginoLifeChat","url":"https://web.telegram.org/k/#@StroginoLifeChat"},{"id":"33","name":"ТЬюторс Клаб","username":"english_tutors_club","url":"https://web.telegram.org/k/#@english_tutors_club"},{"id":"34","name":"Чат Зеленоград","username":"zelenogradru_chat","url":"https://web.telegram.org/k/#@zelenogradru_chat"},{"id":"35","name":"Красногорск","username":"krasnogorsk_24_chat","url":"https://web.telegram.org/k/#@krasnogorsk_24_chat"},{"id":"36","name":"Барахолка Отрада","username":"mvlotrada","url":"https://web.telegram.org/k/#@mvlotrada"},{"id":"37","name":"Барахолка ЖК Митино Парк","username":"mitino_park_barakholka","url":"https://web.telegram.org/k/#@mitino_park_barakholka"},{"id":"38","name":"ЖК Лесная Отрада Соседи","username":"lo_aristovo1","url":"https://web.telegram.org/k/#@lo_aristovo1"},{"id":"39","name":"Репетиторы - Ищу Репетитора","username":"repetitor_repetitori","url":"https://web.telegram.org/k/#@repetitor_repetitori"},{"id":"40","name":"Учительска - репетиторы в телеграм","username":"teachersrooms","url":"https://web.telegram.org/k/#@teachersrooms"},{"id":"41","name":"Родители Москвы","username":"parentsofmoscow","url":"https://web.telegram.org/k/#@parentsofmoscow"},{"id":"42","name":"Заявки репетитор","username":"offers_for_tutor","url":"https://web.telegram.org/k/#@offers_for_tutor"},{"id":"43","name":"Профиматика Вышмат","username":"vyshmath_chat","url":"https://web.telegram.org/k/#@vyshmath_chat"},{"id":"44","name":"Детские праздники","username":"detievent","url":"https://web.telegram.org/k/#@detievent"},{"id":"45","name":"бьюти Отрада","username":"otrada_beauty","url":"https://web.telegram.org/k/#/im?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3Dotrada_beauty%26post%3D12848"},{"id":"46","name":"Родители Фили Кунцево","username":"fili_deti","url":"https://web.telegram.org/k/#@fili_deti"},{"id":"47","name":"Мамочки СВАО","username":"svaomommies","url":"https://web.telegram.org/k/#@svaomommies"},{"id":"48","name":"Репетиторы","username":"repetitortut","url":"https://web.telegram.org/k/#@repetitortut"},{"id":"49","name":"Зеленоград барахолка","username":"zelenograd_chat_msk","url":"https://web.telegram.org/k/#@zelenograd_chat_msk"},{"id":"50","name":"Event hunter - вся творческая работа в Москве","username":"unabum","url":"https://web.telegram.org/k/#@unabum"}];
+
+    init();
+  </script>
+</body>
+</html>
